@@ -18,10 +18,11 @@ node {
 
         // Deploy
         sh 'cp target/*.jar /tmp/'
-        sh 'nohup java -jar /tmp/*.jar &'
+        sh 'nohup java -Dserver.port=8090 -jar /tmp/sample*.jar &'
 
         // Start and wait for startup
-        sh 'while ! httping -qc1 http://localhost:8080 ; do sleep 1 ; done'
+        sh 'sleep 10'
+        sh 'curl http://localhost:8090/hello'
     }
 }
 
