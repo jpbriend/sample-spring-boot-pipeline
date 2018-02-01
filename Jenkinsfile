@@ -4,7 +4,7 @@ node {
         checkout scm
     }
     stage('Build') {
-        withMaven(maven: 'M3') {
+        withMaven(maven: 'Maven 3.x') {
             // Run the maven build
             sh "mvn clean package"
         }
